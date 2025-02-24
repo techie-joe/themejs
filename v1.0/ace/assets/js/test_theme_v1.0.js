@@ -1,4 +1,4 @@
-/*! For license information please see theme_v1.0.min.js.LICENSE.txt */
+/*! For license information please see theme_v1.0.js.LICENSE.txt */
 /* ===============================================================
 // TESTING ThemeJs
 // ============================================================ */
@@ -50,11 +50,11 @@
 
   // ================================================ add listener
   W.onerror = (event) => {
-    out(event.toString(), RED);
     jstest && (jstest.setAttribute('style', RED), jstest.innerHTML = '[JS:ER]');
+    out(event.toString(), RED); roll();
   };
 
-  note('Open developer console (Ctrl+Shift+J) for detailed info.', ORANGE);
+  note('Open developer console for detailed info. (Ctrl+Shift+J).', ORANGE);
   note('Initiate test.run() to begin.', ORANGE);
 
   // ========================================================= run
@@ -78,22 +78,10 @@
     note(`theme.list    = [${theme.list()}]`);
     note(`DOC.className = ${DOC.className}`);
 
-    hr();
-    // ======================================================= ace
-    if (!TEST(ace, 'window.ace')) { return }
-    log(ace)
-
-    // note(`Testing fail procedure. See console.`, ORANGE)
-    // const { _try, invalid, failTo } = ace;
-    // _try(invalid, 'err');
-    // _try(invalid, 'aaa', 'fff');
-    // _try(invalid, 'aaa', 'fff', 'ccc');
-    // _try(failTo, 'www');
-
     // =================================================== storage
-    if (!TEST(ace.storage, 'window.ace.storage')) { return }
-    const { storage } = ace;
-    log(storage);
+    if (!TEST(theme.fn.storage, 'window.theme.fn.storage')) { return }
+    const { storage } = theme.fn;
+    log(theme.fn.storage);
     const
       KEY = 'cuba',
       TC = 'theme',
@@ -119,16 +107,20 @@
 
     // ===================================================== theme
 
-    hr();
-    note(`Finished in ${now() - THEN}ms`);
+    note(`Finished in ${now() - THEN}ms`, ORANGE);
     roll();
   }; // run
 
   // =================================================== run_check
   const run_check = () => {
     hr();
+
+    if (!TEST(isFUN(theme.current), 'window.theme.current')) { return }
     note(`theme.current = ${theme.current()}`);
+
+    if (!TEST(isFUN(theme.list), 'window.theme.list')) { return }
     note(`theme.list    = [${theme.list()}]`);
+
     roll();
   }; // run_check
 
@@ -136,19 +128,20 @@
   const run_updateClass = () => {
     const THEN = now();
     hr();
-    const { ace } = W;
 
     // =============================================== updateClass
-    if (!TEST(isFUN(ace.updateClass), 'window.ace.updateClass')) { return }
+    if (!TEST(isFUN(theme.fn.updateClass), 'window.theme.fn.updateClass')) { return }
+
+    const { updateClass } = theme.fn;
 
     note(`DOC.className = ${DOC.className}`);
-    ace.updateClass(DOC, null, 'TEST');
+    updateClass(DOC, null, 'TEST');
     note(`DOC.className = ${DOC.className}`);
-    ace.updateClass(DOC, 'TEST');
+    updateClass(DOC, 'TEST');
     note(`DOC.className = ${DOC.className}`);
 
-    note('testing logic for updateClass', ORANGE);
-    const updateClass = (element, del, add) => {
+    note('testing logic for dev_updateClass', ORANGE);
+    const dev_updateClass = (element, del, add) => {
 
       note([
         `now =.${element.className}.`,
@@ -180,28 +173,27 @@
 
         element.className = RES;
         return element;
-      } catch (e) { error('Error while executing updateClass : ' + e); }
+      } catch (e) { error('Error while executing dev_updateClass : ' + e); }
 
       hr();
 
     };
 
     element.className = '  a  _ox_  b  c  _oo_  d  ';
-    updateClass(
+    dev_updateClass(
       element,
       '  a  b  c  d  ',
       '  e  f  '
     );
 
     element.className = 'A _ox_ B C _oo D';
-    updateClass(
+    dev_updateClass(
       element,
       'A B C D',
       'E F'
     );
 
-    hr();
-    note(`Finished in ${now() - THEN}ms`);
+    note(`Finished in ${now() - THEN}ms`, ORANGE);
     roll();
   }; // run
 
@@ -263,7 +255,7 @@
     console.clear();
     jsout.innerHTML = '';
     jstest && (jstest.setAttribute('style', GREEN), jstest.innerHTML = '[JS:OK]');
-    note('Cleared.', ORANGE);
+    note('Cleared', ORANGE);
   }; // clear
 
   W.test = {
