@@ -22,17 +22,11 @@
     <link rel="icon" type="image/x-icon" sizes="any" href="/ace/icons/favicon.ico"/><!--[if lt IE 9]><script src="//unpkg.com/html5shiv@3.7.3/dist/html5shiv.min.js"></script><![endif]-->
     <style>
       html { font-family: system-ui, sans-serif; background-color: #ddd; color: #666; }
-      hr { border-top: 0; border-color: #888; }
+      hr { border-width: 0; border-bottom: 1px solid #999; }
       @media (prefers-color-scheme: dark) { html { background-color: #222; color: #999; } a { color:#7a8eea; } }
       
     </style>
-    <link rel="stylesheet" media="all" href="/ace/assets/css/ace.css?v=1.0.0&b=332.28"/>
-    <link rel="stylesheet" media="all" href="/ace/assets/css/demo.css?v=1.0.0&b=332.28"/>
-    <style>
-      #_html.pink { background-color: pink; }
-      #_html.light { background-color: antiquewhite; }
-      
-    </style>
+    <link rel="stylesheet" media="all" href="/ace/assets/css/themejs/style.css?v=1.0.0&b=334.29"/>
     <style>
       #_header ._header_layout { padding: 3rem 1rem 2rem 1rem; margin-top:0; }
       @media (max-width: 530px) {
@@ -61,7 +55,7 @@
       
       #intro ._hero_1 span { line-height:1 }
       
-      #topi { position: absolute; top: 3.3rem; right: 5rem; }
+      #topi { position: absolute; top: 3.3rem; right: 5rem; z-index:1; }
       #topi ._isvg { height: 2.5em; min-width: 2.5em; }
       @media (max-width: 530px) {
       #topi { top: 1rem; right: 1rem; }
@@ -72,6 +66,33 @@
       html   #_header { background: #ccc; }
       ._dark #_header { background: #111; }
       
+      #_html.pink .download { background-color: #ff4b6a; color:#fff; border-color:#ff2c4f; font-size: 1.2em; }
+      .pink  #_header { background: #ff4b6a; color:#ffd0db; }
+      .pink  #_header h1 { color: #5e101d; }
+      .pink  #_header ._tc_primary { color: #fff; }
+      .pink #_header ._header_layout:before { color:#fff }
+      .pink #acelinks ._link { color: #fff; }
+      .pink #cta {
+        margin:-1.8em -1.4em 0;
+        background-color:#ffc0cb;color: #7c3944;
+      }
+      .pink #intro { max-width: none; }
+      .pink #about {
+        font-size: 1.6em;
+        margin-top: -0.6em;
+        margin-bottom: 3em;
+      }
+      .pink #author {
+        position: absolute;
+        bottom: -6em;
+        right: 2em;
+      }
+      .pink #_header ._header_layout:before {
+        text-shadow: -0.015em 0 #840c20;
+      }
+      .pink #cta { border-radius: 1.7rem; }
+      .pink ._btnlink { border-radius: 3rem; }
+      
       html   #_header h1 { color: #000; }
       ._dark #_header h1 { color: #fff; }
       
@@ -79,7 +100,11 @@
       
       #_html       .download { background-color: #1b36b0; color:#fff; border-color: #3046a8; }
       #_html._dark .download { background-color: #7a8eea; color:#000; border-color: #5f72c5; }
-      .download, .viewdemo { min-width: 6em; margin: .5em .3em; }
+      .download, .viewdemo { min-width: 6em; margin: .3em; }
+      
+      @media (max-width: 425px) {
+        #cta { text-align:center; }
+      }
       
     </style>
   </head>
@@ -90,11 +115,11 @@
           <aside id="acelinks"></aside>
           <header id="_header">
             <div class="_header_layout">
-              <div id="intro">
-                <h1 class="_hero_2"><span class="t1">Theme</span><span class="t2 _tc_primary">Js</span></h1>
-                <p class="_smaller _system">by <a class="_stay_fresh" href="https://themeforest.net/user/techiejoe" target="page_author">Techie Joe</a>
+              <div class="_relative" id="intro">
+                <h1 class="_hero_2" id="heading"><span class="t1">Theme</span><span class="t2 _tc_primary">Js</span></h1>
+                <p class="_smaller _system" id="author">by <a class="_stay_fresh" href="https://themeforest.net/user/techiejoe" target="page_author">Techie Joe</a>
                 </p>
-                <p class="_text_justify">A universal web plugin that toggles through multiple themes.</p>
+                <p class="_text_justify" id="about">A universal web plugin that toggles through multiple themes.</p>
               </div>
               <div class="_no_print _needjs" id="topi"><a class="_needjs _link _nav_icon _hover_scale" href="#" onclick="event.preventDefault();theme.change();" title="Change Theme (Ctrl+Alt+T)"><i class="_isvg">
                     <svg viewBox="0 0 24 24">
@@ -121,7 +146,7 @@
         </div>
       </div>
     </div>
-    <script type="text/javascript" src="/ace/assets/js/theme_v1.0.js?v=1.0.0&b=332.28" defer="defer">
+    <script type="text/javascript" src="/ace/assets/js/theme_v1.0.js?v=1.0.0&b=334.29" defer="defer">
     </script>
     <script>
       (function(w){
@@ -129,7 +154,7 @@
           if( acelinks ) {
             acelinks.innerHTML = [
               '<div class="_relative _no_print"><div class="_pa _absolute" style="z-index:1;">',
-              '<a class="_link _nav_icon" href=".." title="Go to parent\'s page"><i class="_itext"><i class="itext">&times;</i></i></a>',
+              '<a class="_link _nav_icon _tc_contra" href=".." title="Go to parent\'s page"><i class="_itext"><i class="itext">&times;</i></i></a>',
               '</div></div>',
             ].join('');
           }
