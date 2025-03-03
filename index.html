@@ -26,7 +26,7 @@
       @media (prefers-color-scheme: dark) { html { background-color: #222; color: #999; } a { color:#7a8eea; } }
       
     </style>
-    <link rel="stylesheet" media="all" href="/ace/assets/css/themejs/style.css?v=1.0.0&b=334.29"/>
+    <link rel="stylesheet" media="all" href="/ace/assets/css/themejs/style.css?v=1.0.0&b=335.31"/>
     <style>
       #_header ._header_layout { padding: 3rem 1rem 2rem 1rem; margin-top:0; }
       @media (max-width: 530px) {
@@ -51,8 +51,6 @@
       #_main,
       #intro { position:relative; z-index:1 }
       
-      #intro { max-width: 16em; }
-      
       #intro ._hero_1 span { line-height:1 }
       
       #topi { position: absolute; top: 3.3rem; right: 5rem; z-index:1; }
@@ -66,26 +64,35 @@
       html   #_header { background: #ccc; }
       ._dark #_header { background: #111; }
       
-      #_html.pink .download { background-color: #ff4b6a; color:#fff; border-color:#ff2c4f; font-size: 1.2em; }
+      html   #_header h1 { color: #000; }
+      ._dark #_header h1 { color: #fff; }
+      
+      #heading { font-size: 2.8em; }
+      #intro   { max-width: 32em; }
+      #about {
+        font-size: 1.6em;
+        margin-top: -0.6em;
+        margin-bottom: 3em;
+        text-align: left;
+      }
+      #author {
+        position: absolute;
+        bottom: -6em;
+        right: 2em;
+      }
+      
+      #_html.pink .download { background-color: #ff4b6a; color:#fff; border-color:#ff2c4f; font-size: 1.3em; }
       .pink  #_header { background: #ff4b6a; color:#ffd0db; }
       .pink  #_header h1 { color: #5e101d; }
       .pink  #_header ._tc_primary { color: #fff; }
       .pink #_header ._header_layout:before { color:#fff }
       .pink #acelinks ._link { color: #fff; }
+      .pink #heading { font-size: 3em; }
       .pink #cta {
-        margin:-1.8em -1.4em 0;
+        margin:0 -1rem;
         background-color:#ffc0cb;color: #7c3944;
-      }
-      .pink #intro { max-width: none; }
-      .pink #about {
-        font-size: 1.6em;
-        margin-top: -0.6em;
-        margin-bottom: 3em;
-      }
-      .pink #author {
-        position: absolute;
-        bottom: -6em;
-        right: 2em;
+        position: relative;
+        top: -1.5rem;
       }
       .pink #_header ._header_layout:before {
         text-shadow: -0.015em 0 #840c20;
@@ -93,8 +100,9 @@
       .pink #cta { border-radius: 1.7rem; }
       .pink ._btnlink { border-radius: 3rem; }
       
-      html   #_header h1 { color: #000; }
-      ._dark #_header h1 { color: #fff; }
+      #_html.light .download { background-color: #231a0f; color:#fff; border-color:#231a0f; }
+      .light  #_header { background: #dfd1be; color:#645d58; }
+      .light  #_header ._tc_primary { color: #645d58; }
       
       #_html .pages ul { list-style-type: none; padding-inline-start: 0; }
       
@@ -104,6 +112,11 @@
       
       @media (max-width: 425px) {
         #cta { text-align:center; }
+        .pink #about {
+          font-size: 1.1em;
+          margin-top: -0.6rem;
+          margin-bottom: 5rem;
+        }
       }
       
     </style>
@@ -146,7 +159,7 @@
         </div>
       </div>
     </div>
-    <script type="text/javascript" src="/ace/assets/js/theme_v1.0.js?v=1.0.0&b=334.29" defer="defer">
+    <script type="text/javascript" src="/ace/assets/js/theme_v1.0.js?v=1.0.0&b=335.31" defer="defer">
     </script>
     <script>
       (function(w){
